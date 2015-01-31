@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title id="title">Snip!t</title>
+		<link href="snipit.css" media="screen" rel="stylesheet" type="text/css" />
+		<link rel="icon" href="snipit_logo.png" />
+	</head>
+	<body>
+		<div id="top_bar">
+			<p><img id="logo" src="snipit_logo.png" /><span id="name">Snip!t</span><span id="user">News Feeds</span></p>
+		</div>
+		<iframe name="viewer" id="viewer" src="about:blank" frameborder="0"></iframe>
+		<div id="panel_headers">
+			<div id="header_1"><span>BBC</span></div>
+			<div id="header_4"><span>HackerNews</span></div>
+			<div id="header_3"><span>CNN</span></div>
+			<div id="header_2"><span>The Onion</span></div>
+		</div>
+		<div id="panel_space">
+			<div id="panel_1"><p><script id="feed-1422703157120890" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml%23&detail=200&showtitle=false&showicon=true&type=js&id=1422703157120890"></script>	</p></div>
+			<div id="panel_4"><p><script id="feed-1422704117236163" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Fnews.ycombinator.com%2Frss&detail=200&showtitle=false&showicon=false&type=js&id=1422704117236163"></script></p></div>
+			<div id="panel_3"><p><script id="feed-1422701958419405" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Frss.cnn.com%2Frss%2Fedition.rss&detail=200&showtitle=false&type=js&id=1422701958419405"></script></p></div>
+			<div id="panel_2"><p><script id="feed-1422732326181851" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Ffeeds.theonion.com%2Ftheonion%2Fdaily&detail=200&showtitle=false&type=js&id=1422732326181851"></script></p></div>
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script>
+			var page_load = false;
+			$(document).ready(function() {
+				$('#viewer').animate({
+					height: 'toggle'
+				}, 500, function() {
+				});
+				$('.feed-item-title a').click(function (e) {
+					e.preventDefault();
+			        var addressValue = $(this).attr("href");
+			        $('#viewer').animate({
+						height: 'toggle'
+					}, 500, function() {
+					});
+					document.getElementById('viewer').src = addressValue;
+					page_load = true;
+					$('#header_1 span').text('Click');
+					$('#header_2 span').text('Here');
+					$('#header_4 span').text('To');
+					$('#header_3 span').text('Close');
+			        //alert(addressValue );
+			    });
+			});
+			$(document).ready(function() {
+					$('#panel_headers').on('click', function() {
+						if (page_load == true) {
+							$('#viewer').animate({
+								height: 'toggle'
+							}, 500, function() {
+								document.getElementById('viewer').src = "about:blank";
+								page_load = false;
+								$('#header_1 span').text('BBC');
+								$('#header_2 span').text('The Onion');
+								$('#header_4 span').text('HackerNews');
+								$('#header_3 span').text('CNN');
+							});
+						}
+					});
+			});
+
+		</script>
+	</body>
+</html>
