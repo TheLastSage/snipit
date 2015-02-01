@@ -3,6 +3,7 @@
 		<title id="title">Snip!t</title>
 		<link href="snipit.css" media="screen" rel="stylesheet" type="text/css" />
 		<link rel="icon" href="snipit_logo.png" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	</head>
 	<body>
 		<div id="top_bar">
@@ -12,10 +13,11 @@
 			<div class="modal">
 				<h3>Preferences</h3>
 				<p>Edit panel preferences here:</p>
-				<div id="feed_box1" class="options"><input type="checkbox" name="feeds" value="bbc" id="bbc">BBC</div>
+				<p>Social Media Feeds Coming Soon!</p>
+				<!-- <div id="feed_box1" class="options"><input type="checkbox" name="feeds" value="bbc" id="bbc">BBC</div>
 				<div id="feed_box2" class="options"><input type="checkbox" name="feeds" value="bbc" id="bbc">The Onion</div><br>
 				<div id="feed_box3" class="options"><input type="checkbox" name="feeds" value="bbc" id="bbc">CNN</div>
-				<div id="feed_box4" class="options"><input type="checkbox" name="feeds" value="bbc" id="bbc">HackerNews</div>
+				<div id="feed_box4" class="options"><input type="checkbox" name="feeds" value="bbc" id="bbc">HackerNews</div> -->
 				<button id="save" onClick="prefClose()">Save</button>
 			</div>
 		</div>
@@ -27,12 +29,11 @@
 			<div id="header_2"><span>The Onion</span></div>
 		</div>
 		<div id="panel_space">
-			<div id="panel_1"><p><script id="feed-1" type="text/javascript" src="about:blank"></script></p></div>
+			<div id="panel_1"><p><script id="feed-1" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml%23&detail=200&showtitle=false&showicon=true&type=js&id=1"></script></p></div>
 			<div id="panel_4"><p><script id="feed-2" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Fnews.ycombinator.com%2Frss&detail=200&showtitle=false&showicon=false&type=js&id=2"></script></p></div>
 			<div id="panel_3"><p><script id="feed-3" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Frss.cnn.com%2Frss%2Fedition.rss&detail=200&showtitle=false&type=js&id=3"></script></p></div>
 			<div id="panel_2"><p><script id="feed-4" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Ffeeds.theonion.com%2Ftheonion%2Fdaily&detail=200&showtitle=false&type=js&id=4"></script></p></div>
 		</div>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script>
 			var page_load = false;
 
@@ -40,8 +41,6 @@
 			var feed2 = {name: "HackNews", link : "http://rss.bloople.net/?url=http%3A%2F%2Fnews.ycombinator.com%2Frss&detail=200&showtitle=false&showicon=false&type=js&id=2"};
 			var feed3 = {name: "CNN", link: "http://rss.bloople.net/?url=http%3A%2F%2Frss.cnn.com%2Frss%2Fedition.rss&detail=200&showtitle=false&type=js&id=3"};
 			var feed4 = {name: "The Onion", link: "http://rss.bloople.net/?url=http%3A%2F%2Ffeeds.theonion.com%2Ftheonion%2Fdaily&detail=200&showtitle=false&type=js&id=4"};
-
-			document.getElementById('feed-1').src = firstFeed.link;
 
 			$(document).ready(function() {
 				$('#viewer').animate({
